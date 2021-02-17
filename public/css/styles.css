@@ -1,0 +1,80 @@
+body {
+  background-image: url("https://i.pinimg.com/originals/98/cd/28/98cd28071df846b804e1f0dd0c72b62d.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #000000;
+  font-family: "Courier New";
+  font-weight: bold;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#mainNav .nav-link {
+  color: #000000;
+}
+
+#mainNav .nav-link:hover {
+  font-size: 1.15rem;
+}
+
+#mainNav #brandName {
+  font-size: 1.25rem;
+  color: #ff7f50;
+  font-weight: bold;
+  text-align: right;
+}
+
+@media (max-width: 1200px) {
+  .navbar {
+    background: rgba(250, 235, 215, 0.2);
+  }
+}
+
+.display {
+  margin-top: 30%;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+footer {
+  background: #d3d1d1;
+  border-top: 1px solid #eeeeee;
+  margin-top: 16px;
+  padding: 1px 0;
+}
+
+header {
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+
+header a {
+  color: #888888;
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+input {
+  border: 1px solid #cccccc;
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+  border: 1px solid #888888;
+  background: #888888;
+  color: white;
+  padding: 8px;
+}
