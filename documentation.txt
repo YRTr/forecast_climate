@@ -1,0 +1,78 @@
+Here's a documentation breakdown for the team to understand the structure and functionality of this Express-based Node.js application:
+
+---
+
+### Project Overview
+
+This is a Node.js and Express application designed to serve static content and render dynamic pages using Handlebars (hbs) templating. The app provides weather forecasts based on user-provided locations, includes pages for 'About', 'Help', and a fallback 404 error page.
+
+### 1. **Dependencies and Imports**
+
+- **Modules**: The app uses `path`, `express`, and `hbs` modules.
+  - `path` handles file and directory paths.
+  - `express` is the framework for building the server.
+  - `hbs` is used as the templating engine for dynamic content rendering.
+- **Custom Utils**: The app imports `geocode` and `forecast` utility modules for location-based data fetching.
+
+### 2. **App Configuration**
+
+- **Server and Port Setup**:
+  - `app` is an instance of the Express app.
+  - `port` defaults to `5500` if `process.env.PORT` is undefined, which is useful for local testing and deployment compatibility.
+
+- **File Paths**:
+  - `publicDirectoryPath`: Points to the `public` folder for static files.
+  - `viewsPath`: Points to the `views` templates in a custom location, `../templates/views`.
+  - `partialsPath`: Points to the reusable `partials` templates in `../templates/partials`.
+
+### 3. **Handlebars Engine and Views Configuration**
+
+- **View Engine**: Sets Handlebars as the templating engine for rendering HTML.
+- **Partials Registration**: Registers the path for partials, allowing for reusable page components like headers or footers.
+
+### 4. **Static Assets**
+
+- `app.use(express.static(publicDirectoryPath))`: Serves static files (like CSS, JavaScript, images) from the `public` directory.
+
+### 5. **Route Definitions**
+
+#### Root Routes
+
+- **Home Page** (`app.get("")`): Renders the `index` template with the title "Forecast" and a name placeholder.
+- **About Page** (`app.get("/about")`): Renders the `about` template with the title "About Us".
+- **Help Page** (`app.get("/help")`): Renders the `help` template with a query prompt and title.
+
+#### Weather Route
+
+- **Weather Data** (`app.get("/weather")`): Fetches weather data based on the provided location.
+  - Validates for the `address` query parameter. If absent, responds with an error message.
+  - Uses `geocode` utility to fetch latitude, longitude, and location details.
+  - Calls `forecast` utility to retrieve weather data using coordinates.
+  - Responds with:
+    - `location`: Fetched location name.
+    - `address`: User-provided address.
+    - `forecast`: The weather forecast data.
+
+#### Products Route
+
+- **Products Search** (`app.get("/products")`): Demonstrates handling of query strings.
+  - Checks for a `search` query parameter. If absent, returns an error message.
+  - If present, logs the search term and returns an empty product list for now.
+
+#### Error Handling Routes
+
+- **Help 404** (`app.get("/help/*")`): Renders a "Help article not found" message if no specific help article is matched.
+- **404 Catch-All** (`app.get("*")`): Renders a "Page not found" message for any other unmatched routes.
+
+### 6. **Server Initialization**
+
+- `app.listen(port, () => {...})`: Starts the server on the specified port and logs a message confirming server start.
+
+---
+
+### Additional Notes
+
+- **Logging**: Unused `console.log` statements have been commented out, though they may be useful for debugging file paths.
+- **Dynamic Data**: The app dynamically renders content using Handlebars templates, making it flexible for future data-driven enhancements.
+
+This structure ensures a modular, organized, and scalable app, easy to maintain and extend.
