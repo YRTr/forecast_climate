@@ -75,4 +75,4 @@ This is a Node.js and Express application designed to serve static content and r
 - **Logging**: Unused `console.log` statements have been commented out, though they may be useful for debugging file paths.
 - **Dynamic Data**: The app dynamically renders content using Handlebars templates, making it flexible for future data-driven enhancements.
 
-This structure ensures a modular, organized, and scalable app, easy to maintain and extend.
+This structure ensures a modular, organized, and scalable app, easy to maintain an:
